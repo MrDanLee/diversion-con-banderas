@@ -1,12 +1,14 @@
 // sacar info de la API
-// mostrar banderas y paises
-// organizar con sort()
-// al clickar aparecerá un menú flotante mostrando todas las fields
-// botón cerrar menú 
+// pais y bandera
+// oragnizar por sort()
+// al clickar, aparece menu flotante 
+// boton de cerrar
 // todo funcionando
 
-const countriesList = document.getElementById('countries-list'),
-      info = document.getElementById('info')
+/*
+
+const info = document.getElementById('info')
+const countriesList = document.getElementById('countries-list')
 
 const getCountries = async () => {
   try {
@@ -15,53 +17,54 @@ const getCountries = async () => {
       throw new Error(console.log(response.status))
     }
     const data = await response.json()
-    sortCountries(data)
+    sortedCountries(data)
     return data
   } catch (err) {
     console.log(err)
   }
 }
 
-function sortCountries (countries) {
+
+function sortedCountries (countries) {
   countries.sort((a, b) => {
     const nameA = a.name.common.toUpperCase()
     const nameB = b.name.common.toUpperCase()
     return nameA.localeCompare(nameB, "es")
   })
-} 
+}
 
 getCountries().then(countries => {
   const allCountries = countries.map(country => {
-    const {name:{common}, flags} = country
-
+    const {flags, name: {common}} = country 
     const template = `
       <li class="card">
         <h2>${common}</h2>
         <img src="${flags.png}" alt="${flags.alt}">
       </li>
     `
-    return template 
+    return template
   }).join("")
   countriesList.innerHTML = allCountries
 
   const cards = document.querySelectorAll('.card')
 
   cards.forEach((card, i) => {
+    card.addEventListener("click", () => {
 
-    card.addEventListener('click', () => {
       info.classList.add("visible")
+      
       const country = countries[i]
-      const {name:{common}, flags, car, population, capital} = country
-  
+      const { flags, name: { common }, car, population, capital  } = country 
+      
       const template = `
         <section class="info-country">
           <div class="info-container">
-            <div class="closed">X</div>
+            <div id="closed" class="closed">X</div>
             <h2>${common}</h2>
-            <img src="${flags.png}" alt="${flags.alt}">
             <p>${car.side}</p>
-            <p>${capital[0]}</p>
+            <img src="${flags.png}" alt="${flags.alt}">
             <p>${population}</p>
+            <p>${capital[0]}</p>
           </div>
         </section>
       `
@@ -74,3 +77,5 @@ getCountries().then(countries => {
     }
   })
 })
+
+*/
